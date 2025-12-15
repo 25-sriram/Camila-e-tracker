@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: url("dollar3.jpg") no-repeat center center fixed;
+    background-size: cover;
+    backdrop-filter: blur(4px);
+    
+    min-height: 100vh;
+}
+.container{
+    text-align: center;
+}
+
+.container img {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height : 400px;
+    width : 320px;
+}
+
+button {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 210px;
+    height: 35px;
+    background: linear-gradient(90deg, #ffcf5c, #ff8a3d, #ff3b2e);
+    border: none;
+    border-radius: 20px;
+    transition: 0.4s;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.signupBtn {
+    top: 78%;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #a06bff, #ff7edb);
+}
+
+@media (max-width: 600px) {
+
+    button {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+
+    body {
+        background-image: url("dollar.jpg"); 
+        background-repeat: no-repeat;
+        background-position: center center; 
+        background-size: cover;
+        background-attachment: fixed; 
+    }
+}

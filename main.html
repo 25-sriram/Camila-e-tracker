@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camila</title>
+
+    <link rel="stylesheet" href="styel2.css">
+</head>
+
+<body>
+    <style>
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #ffffff 0%, #d7b4ff 100%);
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-left img {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+        }
+
+        .brand-name {
+            color: goldenrod;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-size: 16px;
+            color: black;
+            font-weight: 600;
+        }
+
+        .nav-right {
+            margin-right: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-right img {
+            margin-right: 4px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+        }
+
+
+        .toggle {
+            margin-right: 40px;
+            display: none;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            background: linear-gradient(135deg, #ffffff 0%, #d7b4ff 100%);
+            width: 100%;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .mobile-menu a {
+            margin-right: 40px;
+            padding: 12px 0;
+            font-size: 18px;
+            border-bottom: 1px solid rgb(230, 230, 230);
+            text-decoration: none;
+            color: black;
+            font-weight: 600;
+        }
+
+        .mobile-profile {
+            margin-right: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .mobile-profile img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+        }
+
+        .nav-links a.active,
+        .mobile-menu a.active {
+            background: #b67bff;
+            color: white !important;
+            padding: 6px 14px;
+            border-radius: 12px;
+            transition: 0.3s ease;
+        }
+
+
+        .nav-links a:hover,
+        .mobile-menu a:hover {
+            background: rgba(182, 123, 255, 0.25);
+            padding: 6px 14px;
+            border-radius: 12px;
+            transition: 0.3s ease;
+        }
+
+        .nav-links a,
+        .mobile-menu a {
+            padding: 6px 14px;
+
+            display: inline-block;
+        }
+
+        @media(max-width: 768px) {
+
+            .nav-links,
+            .nav-right {
+                display: none;
+            }
+
+            .toggle {
+                display: block;
+            }
+        }
+    </style>
+
+    </head>
+
+    <body>
+
+        <nav class="navbar">
+
+            <div class="nav-left">
+                <img src="logo.png" alt="logo">
+                <span class="brand-name">Camila</span>
+            </div>
+
+            <div class="nav-links">
+                <a href="main.html">Home</a>
+                <a href="expenses.html">Expenses</a>
+                <a href="analytics.html">Analysis</a>
+            </div>
+
+            <div class="nav-right">
+                <img src="profile.jpg" alt="profile">
+                <span>John</span>
+            </div>
+
+            <div class="toggle" onclick="toggleMenu()">☰</div>
+        </nav>
+
+
+        <div id="mobileMenu" class="mobile-menu">
+            <div class="mobile-profile">
+                <img src="profile.jpg" alt="profile">
+                <span>John</span>
+            </div>
+
+            <a href="main.html">Home</a>
+            <a href="expenses.html">Expenses</a>
+            <a href="analytics.html">Analysis</a>
+        </div>
+
+
+        <div class="header-card">
+
+            <h2>Total Balance</h2>
+            <h1 id="balance">₹ 0.00</h1>
+
+            <div class="income-expense-box">
+
+
+                <div id="openIncomePopup" class="small-card">
+                    <span class="arrowup">⬆</span>
+                    <p>Income</p>
+                    <h3 id="incomeAmount">₹ 0.00</h3>
+                </div>
+
+                <div id="openExpensePopup" class="small-card">
+                    <span class="arrowdown">⬇</span>
+
+                    <p>Expenses</p>
+                    <h3 id="expenseAmount">₹ 0.00</h3>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="transaction">
+            <h4>Transactions</h4>
+            <button onclick="window.location.href='expenses.html'">View All</button>
+        </div>
+
+        <div id="transactionList"></div>
+
+        <button class="fab" id="fab">+</button>
+
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <h3>Add Expense</h3>
+
+                <label>Title</label>
+                <input type="text" id="title">
+
+                <label>Amount</label>
+                <input type="number" id="amount">
+
+                <label>Category</label>
+                <select id="category">
+                    <option>Shopping</option>
+                    <option>Medicine</option>
+                    <option>Travel</option>
+                    <option>Food</option>
+                    <option>Sport</option>
+                </select>
+
+                <button id="saveBtn">Add</button>
+                <button id="closeBtn" class="closeBtn">Close</button>
+            </div>
+        </div>
+
+        <div id="incomePopup" class="popup">
+            <div class="popup-content">
+                <h3>Edit Income</h3>
+
+                <label>Enter Income</label>
+                <input type="number" id="incomeInput">
+
+                <button id="saveIncome">Save</button>
+                <button id="closeIncome" class="closeBtn">Close</button>
+            </div>
+        </div>
+
+        <div id="expensePopup" class="popup">
+            <div class="popup-content">
+                <h3>Edit Expenses</h3>
+
+                <label>Enter Expenses</label>
+                <input type="number" id="expenseInput">
+
+                <button id="saveExpense">Save</button>
+                <button id="closeExpense" class="closeBtn">Close</button>
+            </div>
+        </div>
+        <div id="profilePopup" class="popup">
+            <div class="popup-content profile-content">
+                <h3>Edit Profile</h3>
+                <button id="closeProfileBtn" class="closeBtn">✕</button>
+
+                <div class="profile-photo-area">
+                    <img id="profilePhotoDisplay" src="profile.jpg" alt="Profile Picture">
+                </div>
+
+                <label for="profileUsernameInput">Username</label>
+                <input type="text" id="profileUsernameInput" placeholder="profile Username">
+
+                <label for="profileEmailInput">Email</label>
+                <input type="email" id="profileEmailInput" placeholder="email" disabled>
+
+                <label for="profilePhotoURLInput">Profile Photo URL</label>
+                <input type="text" id="profilePhotoURLInput" placeholder="Paste image URL here (Optional)">
+
+                <button id="updateProfileBtn">Update Profile</button>
+            </div>
+        </div>
+        <script>
+            function toggleMenu() {
+                let menu = document.getElementById("mobileMenu");
+
+                if (menu.style.display === "flex") {
+                    menu.style.display = "none";
+                } else {
+                    menu.style.display = "flex";
+                }
+            }
+        </script>
+
+        <script>
+
+            function setActiveLink() {
+                const path = window.location.pathname.split("/").pop();
+
+                document.querySelectorAll(".nav-links a, .mobile-menu a").forEach(link => {
+                    link.classList.remove("active");
+
+                    if (link.getAttribute("href") === path) {
+                        link.classList.add("active");
+                    }
+                });
+            }
+
+            setActiveLink();
+        </script>
+        <script src="main.js"></script>
+    </body>
+
+</html>

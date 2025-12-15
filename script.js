@@ -1,0 +1,46 @@
+
+async function handleSignup(username, email, password) {
+    try {
+        const response = await fetch('http://localhost:5000/api/auth/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ username, email, password }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('username', data.username);
+
+
+            window.location.href = 'main.html';
+        } else {
+
+            alert('Signup Failed: ' + data.message);
+        }
+    } catch (error) {
+        console.error('Network or Server Error:', error);
+        alert('Could not connect to the server.');
+    }
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const signupForm = document.getElementById('signup-form');
+
+    if (signupForm) {
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const username = document.getElementById('username-input').value;
+            const email = document.getElementById('email-input').value;
+            const password = document.getElementById('password-input').value;
+
+            handleSignup(username, email, password);
+        });
+    }
+});

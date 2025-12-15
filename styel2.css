@@ -1,0 +1,265 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+.header-card {
+    background: linear-gradient(135deg, #8b5cff, #ff79c6);
+    padding: 40px 20px;
+    border-radius: 25px;
+    margin: 10px;
+    text-align: center;
+    color: white;
+}
+
+.header-card h1 {
+    font-size: 48px;
+    margin-top: 10px;
+}
+
+.header-card h2 {
+    font-size: 28px;
+    opacity: 0.9;
+}
+
+.transaction {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px;
+    color: black;
+    font-display: block;
+    font-size: 20px;
+    margin-left: 20px;
+}
+
+button {
+    color: rgb(0, 11, 14);
+    border: none;
+    border-radius: 20%;
+    background: linear-gradient(90deg, #ffcf5c, #ff8a3d, #ff3b2e);
+    width: 65px;
+    height: 30px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #a06bff, #ff7edb);
+    color: white;
+}
+
+.income-expense-box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.small-card {
+    width: 150px;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.small-card:hover {
+    transform: scale(1.05);
+}
+
+.small-card p {
+    font-size: 16px;
+}
+
+.small-card h3 {
+    margin-top: 5px;
+}
+
+.arrowup {
+    color: greenyellow;
+    font-size: 20px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.arrowdown {
+    color: red;
+    font-size: 20px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Floating Button */
+.fab {
+    position: fixed;
+    left: 50%;
+    bottom: 35px;
+    transform: translateX(-50%);
+    width: 65px;
+    height: 65px;
+    color: white;
+    background: linear-gradient(135deg, #ffcf5c, #ff3d4e);
+    border-radius: 50%;
+    border: none;
+    font-size: 32px;
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 999;
+}
+
+.popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px;
+}
+
+.popup-content input,
+.popup-content select {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.trans-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 15px;
+    margin: 10px 20px;
+    border-radius: 14px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.trans-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    color: white;
+}
+
+.category-shopping {
+    background: #fcd34d;
+}
+
+.category-shopping::before {
+    content: "🛍️";
+}
+
+.category-medicine {
+    background: #ff6fa5;
+}
+
+.category-medicine::before {
+    content: "💊";
+}
+
+.category-travel {
+    background: #fb923c;
+}
+
+.category-travel::before {
+    content: "✈️";
+}
+
+.category-sport {
+    background: #34d399;
+}
+
+.category-sport::before {
+    content: "🏋️";
+}
+
+.category-food {
+    background: #6366f1;
+}
+
+.category-food::before {
+    content: "🍔";
+}
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content.profile-content {
+    width: 350px;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.profile-photo-area {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#profilePhotoDisplay {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #d7b4ff;
+}
+
+.popup-content .closeBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    width: auto;
+    height: auto;
+    transform: none;
+}
+
+#updateProfileBtn {
+    margin-top: 15px;
+    width: 100%;
+    background: linear-gradient(90deg, #b67bff, #d7b4ff);
+    color: white;
+    font-weight: bold;
+    height: 40px;
+    border: none;
+    border-radius: 20px;
+}
