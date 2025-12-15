@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://camila-e-tracker1.onrender.com/api';
 const getToken = () => localStorage.getItem('token');
 let currentIncome = 0;
 let currentExpenses = 0;

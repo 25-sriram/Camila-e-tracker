@@ -1,7 +1,10 @@
 
 async function handleSignup(username, email, password) {
     try {
-        const response = await fetch('http://localhost:5000/api/auth/signup', {
+        // --- FIX: Replace localhost with your live Render backend URL ---
+        const BACKEND_URL = 'https://camila-e-tracker1.onrender.com';
+
+        const response = await fetch(`${BACKEND_URL}/api/auth/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -11,6 +14,7 @@ async function handleSignup(username, email, password) {
 
         const data = await response.json();
 
+        // ... (rest of the logic)
         if (response.ok) {
 
             localStorage.setItem('token', data.token);
