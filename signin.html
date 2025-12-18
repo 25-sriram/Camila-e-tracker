@@ -22,13 +22,13 @@
             <a href="signup.html">Sign Up</a>
         </p>
     </div>
-<script>
-        // Define your live backend URL here
+    <script>
+
         const BACKEND_URL = 'https://camila-e-tracker1.onrender.com';
 
         async function handleLogin(email, password) {
             try {
-                // Use the defined BACKEND_URL variable for the fetch call
+
                 const response = await fetch(`${BACKEND_URL}/api/auth/login`, {
                     method: 'POST',
                     headers: {

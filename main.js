@@ -197,33 +197,27 @@ function updateUI() {
 }
 
 
-// 1. Open the Profile Popup (Listen for clicks on BOTH desktop (.nav-right) AND mobile (.mobile-profile))
 document.querySelectorAll('.nav-right, .mobile-profile').forEach(el => {
-    // Check if the element exists and add the listener
+
     if (el) {
         el.addEventListener('click', async (e) => {
-            // Stop the click from propagating to the toggle menu function (important for mobile)
+
             e.stopPropagation();
 
             await populateProfileForm();
 
-            // Hide the mobile menu if it's open
             document.getElementById("mobileMenu").style.display = "none";
 
-            // Open the profile panel
             document.getElementById('profilePopup').style.display = 'flex';
         });
     }
 });
 
-// 2. Close the Profile Popup (This remains the same)
 document.getElementById('closeProfileBtn').onclick = () => {
     document.getElementById('profilePopup').style.display = 'none';
 };
 
-// ... (rest of your main.js code)
 
-// 3. Populate the form with current data
 async function populateProfileForm() {
     try {
         const response = await fetch(`${API_URL}/users/me`, {
@@ -232,20 +226,18 @@ async function populateProfileForm() {
         const data = await response.json();
 
         if (response.ok) {
-            // Fill the inputs with current data
+
             document.getElementById('profileUsernameInput').value = data.username;
-            // The email is disabled but still populated
+
             document.getElementById('profileEmailInput').value = data.email;
 
-            // Photo URL display
+
             const photoURL = data.profilePhotoURL || 'profile.jpg';
             document.getElementById('profilePhotoURLInput').value = photoURL;
             document.getElementById('profilePhotoDisplay').src = photoURL;
 
-            // Update the navbar profile image and name immediately
             updateNavbar(data.username, photoURL);
 
-            // Update localStorage for immediate use across pages
             localStorage.setItem('username', data.username);
 
         } else {
@@ -256,11 +248,10 @@ async function populateProfileForm() {
     }
 }
 
-// 4. Update Profile Button Click Handler
 document.getElementById('updateProfileBtn').addEventListener('click', async () => {
     const newUsername = document.getElementById('profileUsernameInput').value;
     const newPhotoURL = document.getElementById('profilePhotoURLInput').value;
-    const currentEmail = document.getElementById('profileEmailInput').value; // Read current email
+    const currentEmail = document.getElementById('profileEmailInput').value; 
 
     if (!newUsername || !currentEmail) {
         return alert("Username and Email cannot be empty.");
@@ -270,7 +261,6 @@ document.getElementById('updateProfileBtn').addEventListener('click', async () =
 });
 
 
-// 5. API Call to update the profile data
 async function updateProfile(username, email, profilePhotoURL) {
     try {
         const response = await fetch(`${API_URL}/users/profile`, {
@@ -290,9 +280,9 @@ async function updateProfile(username, email, profilePhotoURL) {
 
         if (response.ok) {
             alert(data.message);
-            // Update UI elements immediately
+
             updateNavbar(data.username, data.profilePhotoURL);
-            // Update localStorage
+
             localStorage.setItem('username', data.username);
 
             document.getElementById('profilePopup').style.display = 'none';
@@ -306,7 +296,6 @@ async function updateProfile(username, email, profilePhotoURL) {
     }
 }
 
-// 6. Helper function to update Navbar/Mobile Menu
 function updateNavbar(username, photoURL) {
     const imgPath = photoURL || 'profile.jpg';
     document.querySelectorAll('.nav-right img, .mobile-profile img').forEach(img => {
@@ -318,14 +307,11 @@ function updateNavbar(username, photoURL) {
 }
 
 
-// --- INTEGRATE PROFILE UPDATE WITH INITIAL LOAD ---
-
-// Update your existing loadUserDataAndTransactions function to call updateNavbar
 async function loadUserDataAndTransactions() {
     await fetchDashboardSummary();
     await fetchTransactions();
 
-    // Fetch user profile data to set the navbar elements
+
     try {
         const response = await fetch(`${API_URL}/users/me`, {
             headers: { 'Authorization': `Bearer ${getToken()}` }
