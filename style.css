@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
@@ -7,20 +7,20 @@ body {
     background: url("dollar3.jpg") no-repeat center center fixed;
     background-size: cover;
     backdrop-filter: blur(4px);
-    
+
     min-height: 100vh;
 }
-.container{
+
+.container {
     text-align: center;
 }
 
 .container img {
     position: absolute;
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height : 400px;
-    width : 320px;
+    top: 30%;
+    left: 42.5%;
+    height: 400px;
+    width: 320px;
 }
 
 button {
@@ -54,11 +54,19 @@ button:hover {
         font-size: 1rem;
     }
 
+    .container img {
+        position: absolute;
+        top: 20%;
+        left: 10%;
+        height: 400px;
+        width: 320px;
+    }
+
     body {
-        background-image: url("dollar.jpg"); 
+        background-image: url("dollar.jpg");
         background-repeat: no-repeat;
-        background-position: center center; 
+        background-position: center center;
         background-size: cover;
-        background-attachment: fixed; 
+        background-attachment: fixed;
     }
 }
