@@ -17,8 +17,8 @@ body {
 
 .container img {
     position: absolute;
-    top: 30%;
-    left: 42.5%;
+    top: 25%;
+    left: 41.5%;
     height: 400px;
     width: 320px;
 }
@@ -56,7 +56,7 @@ button:hover {
 
     .container img {
         position: absolute;
-        top: 20%;
+        top: 15%;
         left: 10%;
         height: 400px;
         width: 320px;
